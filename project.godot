@@ -12,8 +12,8 @@ config_version=5
 
 config/name="dodge-creeps2"
 run/main_scene="uid://cd7v0mkip8r75"
-config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="res://art/icon.svg"
 
 [display]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://cd7v0mkip8r75"]
+[gd_scene load_steps=10 format=4 uid="uid://cd7v0mkip8r75"]
 
-[ext_resource type="Script" uid="uid://i1fxgeo3kaod" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cvti57swsqvwk" path="res://mob.tscn" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://ckge077u8b8wm" path="res://player.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://daueul5i13nmy" path="res://hud.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://i1fxgeo3kaod" path="res://scripts/main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cvti57swsqvwk" path="res://scenes/mob.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://ckge077u8b8wm" path="res://scenes/player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c0r3x7gg0exo6" path="res://scenes/power_up.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://daueul5i13nmy" path="res://scenes/hud.tscn" id="4_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://bfk77uo27l4ra" path="res://art/gameover.wav" id="5_lquwl"]
 
 [sub_resource type="Curve2D" id="Curve2D_ig7tw"]
@@ -19,11 +20,20 @@ sampling_rate = 44100.0
 
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_7mycd"]
 packet_sequence = SubResource("OggPacketSequence_1utue")
+tags = {
+"artist": "HorrorPen",
+"comment": "",
+"contact": "",
+"encoder": "FL Studio",
+"genre": "",
+"title": "House In a Forest Loop"
+}
 loop = true
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0xm2m")
 mob_scene = ExtResource("2_1bvp3")
+powerup_scene = ExtResource("3_tefeu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -43,6 +53,8 @@ wait_time = 0.5
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="PowerupTimer" type="Timer" parent="."]
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
