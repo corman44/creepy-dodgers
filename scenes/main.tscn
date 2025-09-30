@@ -77,4 +77,5 @@ stream = ExtResource("5_lquwl")
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

@@ -10,21 +10,18 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$PowerupTimer.stop()
 	$Music.stop()
 	$DeathSound.play()
 	$HUD.show_game_over()
-	
-func process_powerup():
-	$Player.speed += 200
-	print("Player Speed %d", $Player.speed)
-	pass
-	
+	$Player.reset()
+	get_tree().call_group("power_ups", "queue_free")
 
 func new_game():
 	score = 0
@@ -69,12 +66,13 @@ func _on_score_timer_timeout() -> void:
 func _on_powerup_timer_timeout() -> void:
 	var powerup = powerup_scene.instantiate()
 	
-	43position = Vector2(7000 * randf() + 250 ,11000 * randf() + 100)
+	powerup.position = Vector2(460 * randf() + 10 , 700 * randf() + 10 )
+	print("powerup spwaning @  ", powerup.position)	
 	
 	add_child(powerup)
-	
 	pass
 
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
 	$ScoreTimer.start()
+	$PowerupTimer.start()

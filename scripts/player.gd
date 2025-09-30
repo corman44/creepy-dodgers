@@ -42,11 +42,26 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 
 
-func _on_body_entered(_body: Node2D) -> void:
-	hide() # Player disappears after being hit.
-	hit.emit()
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
+func _on_body_entered(node: CollisionObject2D) -> void:
+	if node.collision_layer == 1:
+		# it's a creep
+		print("Layer1 Collision w/ Player")
+		hide() # Player disappears after being hit.
+		hit.emit()
+		$CollisionShape2D.set_deferred("disabled", true)
+
+	elif node.collision_layer == 2:
+		print("Layer2 Collision w/ Player")
+		speed += 400
+		print("Player Speed: ", speed)
+		node.hide()
+		#FIXME need to disable the collision after hit
+		node.disable_mode = 0
+		#print("Parent of node hit: ", node.get_parent().get_class())
+		# it's a powerup
+		
+func reset() -> void:
+	speed = 400
 	
 func start(pos):
 	position = pos
