@@ -5,6 +5,8 @@ extends Node
 
 var score
 
+#TODO Mob Spawn Timer -> 0.5s
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

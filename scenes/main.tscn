@@ -55,6 +55,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PowerupTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
